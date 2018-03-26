@@ -1,5 +1,8 @@
 package com.olgaruban.controller;
 
+import com.olgaruban.dao.UserDao;
+import com.olgaruban.dao.UserDaoImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ public class UserControllerServlet extends HttpServlet {
         if (action != null && action.equalsIgnoreCase("/list")) {
             PrintWriter printWriter = resp.getWriter();
             printWriter.print("List Users");
+            UserDao userDao = new UserDaoImpl();
         }
     }
 
