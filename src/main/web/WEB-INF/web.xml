@@ -8,6 +8,16 @@
     <description>Servlet JDBC CRUD project</description>
 
     <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>UserController</servlet-name>
         <servlet-class>com.olgaruban.controller.UserControllerServlet</servlet-class>
     </servlet>
@@ -16,9 +26,5 @@
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user/*</url-pattern>
     </servlet-mapping>
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
 
 </web-app>

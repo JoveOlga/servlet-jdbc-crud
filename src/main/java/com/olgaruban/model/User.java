@@ -5,12 +5,12 @@ package com.olgaruban.model;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 
 public class User {
 
     private int id;
-
 
     private String firstName;
 
@@ -26,10 +26,9 @@ public class User {
 
     private String photo;
 
-//    private Boolean isAdmin;
-//
-//    @Temporal(javax.persistence.TemporalType.DATE)
-//    private Date createdDate;
+    private Role role;
+
+    private Date creationDate;
 
 
     public User(int id, String firstName, String lastName, String position, String email, String phone, String password) {
@@ -40,6 +39,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         setPassword(password);
+        this.creationDate = new Date();
     }
 
     public User(int id, String firstName, String lastName, String position, String email, String phone) {
@@ -49,6 +49,7 @@ public class User {
         this.position = position;
         this.email = email;
         this.phone = phone;
+        this.creationDate = new Date();
     }
 
     public User(String firstName, String lastName, String position, String email, String phone, String password) {
@@ -58,6 +59,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         setPassword(password);
+        this.creationDate = new Date();
     }
 
 
@@ -67,6 +69,17 @@ public class User {
         this.position = position;
         this.email = email;
         setPassword(password);
+        this.creationDate = new Date();
+    }
+
+    public User(int id, String firstName, String lastName, String position, String email, Role role) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
+        this.email = email;
+        this.role = role;
+        this.creationDate = new Date();
     }
 
     public User() {
@@ -144,8 +157,32 @@ public class User {
         return id;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public String getRoleString() {
+        return role.toString();
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public long getCreationDateTimestamp() {
+        return creationDate.getTime();
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
     @Override
     public String toString() {
-        return id + " " + firstName + " " + lastName + " " + position;
+        return id + " " + firstName + " " + lastName + " " + (role != null ? role : "");
     }
 }
