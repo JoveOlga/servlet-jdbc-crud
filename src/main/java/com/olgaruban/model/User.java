@@ -30,6 +30,88 @@ public class User {
 
     private Date creationDate;
 
+    public static class Builder {
+
+        private int id;
+
+        private String firstName = "";
+
+        private String lastName;
+
+        private String position = "";
+
+        private String email;
+
+        private String phone = "";
+
+        private String password;
+
+        private String photo = "";
+
+        private Role role = null;
+
+        private Date creationDate = null;
+
+        public Builder(String lastName, String email, String password) {
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+        }
+
+        public Builder id(int val) {
+            id = val;
+            return this;
+        }
+
+        public Builder firstName(String val) {
+            firstName = val;
+            return this;
+        }
+
+        public Builder position(String val) {
+            position = val;
+            return this;
+        }
+
+        public Builder phone(String val) {
+            phone = val;
+            return this;
+        }
+
+        public Builder photo(String val) {
+            photo = val;
+            return this;
+        }
+
+        public Builder role(Role val) {
+            role = val;
+            return this;
+        }
+
+        public Builder creationDate(Date val) {
+            creationDate = val;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
+
+    }
+
+    public User (Builder builder) {
+        id = builder.id;
+        firstName = builder.firstName;
+        lastName = builder.lastName;
+        position = builder.position;
+        email = builder.email;
+        phone = builder.phone;
+        setPassword(builder.password);
+        photo = builder.photo;
+        role = builder.role;
+        creationDate = builder.creationDate;
+    }
+
 
     public User(int id, String firstName, String lastName, String position, String email, String phone, String password) {
         this.id = id;

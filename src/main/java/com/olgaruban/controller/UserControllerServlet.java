@@ -64,7 +64,8 @@ public class UserControllerServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("/add")) {
-            User user = new User("Vasya", "Pupkin", "Manager", "vasya@email.com", "pass");
+//            User user = new User("Vasya", "Pupkin", "Manager", "vasya@email.com", "pass");
+            User user = new User.Builder( "Pupkin", "vasya@email.com", "pass").firstName("Vas").position("Director").build();
             user.setRole(Role.MANAGER);
             String r = user.getRoleString();
             int id = userDao.add(user);
